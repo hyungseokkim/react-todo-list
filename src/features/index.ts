@@ -49,6 +49,11 @@ const reducers = {
 
         list.push(newTodo);//list에 새로운 Todo데이터 삽입 
     },
+    toggle: ({list}: TodoList, {payload: {id, isDone}}: PayloadAction<Todo>) =>{
+        const targetIndex = list.findIndex((item: Todo) => item.id === id);
+
+        list[targetIndex].isDone = !isDone;
+    },
 };
 
 /*
@@ -70,6 +75,13 @@ const todoSlice = createSlice({
     name: actionPrefix,
 });
 
+/*
+createSelector : 
+memoization을 활용해 state값을 효율적으로 가져올 수 있도록 도와준다.
+여러 개의 인자를 통해서 state의 각 속성들을 따로 따로 가공할 수 있고,
+
+맨 마지막 인자로 넣는 함수에는 그 전에 나열한 함수에서 리턴한 값들을 인자로 받아온다.
+*/
 export const selectTodoList = createSelector(
     (state: TodoList) => state.list,
     (list: Todo[]) => list,
@@ -77,10 +89,11 @@ export const selectTodoList = createSelector(
 
 export const actions = {
     addTodos,
+    toggleTodos
 };
 
 export const rootReducer = combineReducers({
     todos: todoSlice.reducer,
 });
-
+console.log(todoSlice);
 export type RootState = ReturnType<typeof rootReducer>
