@@ -92,7 +92,7 @@ this.state={
 <h1>6.	TypeScript 관련 사이트</h1> : https://reactjs.org/docs/static-type-checking.html#typescript
 <h1>7.	React-router</h1> : 특정 주소로 접근 시 요청에 알맞는 Component로 연결
 (스프링의 Controller같은 역할)
-설치명령: yarn add react-router-dom @types/react-router-dom
+설치명령: <p>yarn add react-router-dom @types/react-router-dom</p>
 사용예시: 
 <Route path=”/” render={() =><h3>Home</h3>} />
 <Route path=”/intro” render={() => <h3>소개</h3>} />
