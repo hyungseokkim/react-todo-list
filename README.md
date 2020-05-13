@@ -16,15 +16,15 @@ create-react-app [프로젝트명] --typescirpt
 -	최상위 요소 리턴하는 경우, ()로 감싸야 한다.
 -	자식들을 바로 랜더링 하고싶으면, <> 자식들 </>를 사용(Fragment)
 -	자바스크립트 표현식 사용 시 {표현식}을 이용(중괄호)
-ex)/*
+ex)
 const component = () =>{
 	<div>
-		<h1>
+		<!--<h1>-->
 			{‘Hello’ + ‘world’} //자바 표현식
-		</h1>
+		<!--</h1>-->
 	</div>
 }
-*/
+
 -	if 문 사용 불가 (삼항 연산자 혹은 && 사용)
 ex) let a;
 let(or const) a = true ? 1 : 2; //삼항 연산자의 예
