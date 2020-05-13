@@ -35,7 +35,7 @@ const actionPrefix = "TODOS";
  */
 
 const addTodos = createAction<object>(`${actionPrefix}/add`);
-
+const toggleTodos = createAction<object>(`${actionPrefix}/toggle`);
 /*
 todoSlice.reducer를 아까 맨 처음 만들어준 rootReducers에 넣으면 이제 자동으로 reducer 함수들이 연결된다.
 */
