@@ -1,9 +1,9 @@
 React(TypeScript) 기초 지식
 작성자 : 김형석
 최초 작성일 : 2020년 5월 13일
-1.	프로젝트 생성방법
+<h1>1.	프로젝트 생성방법</h1>
 create-react-app [프로젝트명] --typescirpt
-2.	SRC 디렉토리
+<h1>2.	SRC 디렉토리</h1>
 -	Index.tsx : 메인 엔트리 파일/ ReactDom.render 수행
 -	Index.css : 글로벌 스타일 작성 – 프로그래밍 적으로 제한되지 않음
 -	App.tsx : App 컴포넌트(샘플컴포넌트)/ 클래스이름과 파일이름 맞추기
@@ -11,12 +11,12 @@ create-react-app [프로젝트명] --typescirpt
 -	App.test.tsx : App컴포넌트에 대한 테스트 작성파일
 -	registerServiceWorker.ts : pwa 서비스 워커 사용등록
 
-3.	JSX 문법
+<h1>3.	JSX 문법<h1>
 -	최상위 요소가 하나여야 한다.
 -	최상위 요소 리턴하는 경우, ()로 감싸야 한다.
 -	자식들을 바로 랜더링 하고싶으면, <> 자식들 </>를 사용(Fragment)
 -	자바스크립트 표현식 사용 시 {표현식}을 이용(중괄호)
-ex)
+ex)/*
 const component = () =>{
 	<div>
 		<h1>
@@ -24,6 +24,7 @@ const component = () =>{
 		</h1>
 	</div>
 }
+*/
 -	if 문 사용 불가 (삼항 연산자 혹은 && 사용)
 ex) let a;
 let(or const) a = true ? 1 : 2; //삼항 연산자의 예
@@ -59,8 +60,8 @@ const component = () =>(
 <br /> : 자식요소가 없는 경우
 
 
-4.	Component 생성
-5.	Props, state
+<h1>4.	Component 생성</h1>
+<h1>5.	Props, state</h1>
 -props :
 컴포넌트 외부에서 컴포넌트로 넣어주는 데이터(함수도 가능)
 컴포넌트 내부에서는 자신의 props를 변경할 수 없다.
@@ -88,8 +89,8 @@ this.state={
 <div>{this.state.age}</div>
 .  .  . 
 내부에서 변경하더라도 this.setState함수를 이용해야만 render호출 됨
-6.	TypeScript 관련 사이트 : https://reactjs.org/docs/static-type-checking.html#typescript
-7.	React-router : 특정 주소로 접근 시 요청에 알맞는 Component로 연결
+<h1>6.	TypeScript 관련 사이트</h1> : https://reactjs.org/docs/static-type-checking.html#typescript
+<h1>7.	React-router</h1> : 특정 주소로 접근 시 요청에 알맞는 Component로 연결
 (스프링의 Controller같은 역할)
 설치명령: yarn add react-router-dom @types/react-router-dom
 사용예시: 
