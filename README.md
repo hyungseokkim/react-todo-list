@@ -11,7 +11,7 @@ create-react-app [프로젝트명] --typescirpt
 -	App.test.tsx : App컴포넌트에 대한 테스트 작성파일
 -	registerServiceWorker.ts : pwa 서비스 워커 사용등록
 
-<h1>3.	JSX 문법<h1>
+<h1>3.	JSX 문법</h1>
 -	최상위 요소가 하나여야 한다.
 -	최상위 요소 리턴하는 경우, ()로 감싸야 한다.
 -	자식들을 바로 랜더링 하고싶으면, <> 자식들 </>를 사용(Fragment)
