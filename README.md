@@ -1,44 +1,100 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React(TypeScript) 기초 지식
+작성자 : 김형석
+최초 작성일 : 2020년 5월 13일
+1.	프로젝트 생성방법
+create-react-app [프로젝트명] --typescirpt
+2.	SRC 디렉토리
+-	Index.tsx : 메인 엔트리 파일/ ReactDom.render 수행
+-	Index.css : 글로벌 스타일 작성 – 프로그래밍 적으로 제한되지 않음
+-	App.tsx : App 컴포넌트(샘플컴포넌트)/ 클래스이름과 파일이름 맞추기
+-	App.css : App컴포넌트에서 쓰이는 스타일 => 일종의 암묵적 합의
+-	App.test.tsx : App컴포넌트에 대한 테스트 작성파일
+-	registerServiceWorker.ts : pwa 서비스 워커 사용등록
 
-## Available Scripts
+3.	JSX 문법
+-	최상위 요소가 하나여야 한다.
+-	최상위 요소 리턴하는 경우, ()로 감싸야 한다.
+-	자식들을 바로 랜더링 하고싶으면, <> 자식들 </>를 사용(Fragment)
+-	자바스크립트 표현식 사용 시 {표현식}을 이용(중괄호)
+ex)
+const component = () =>{
+	<div>
+		<h1>
+			{‘Hello’ + ‘world’} //자바 표현식
+		</h1>
+	</div>
+}
+-	if 문 사용 불가 (삼항 연산자 혹은 && 사용)
+ex) let a;
+let(or const) a = true ? 1 : 2; //삼항 연산자의 예
+// &&, || (논리 연산자의 예)
+true && <p>참</p> //앞에가 true이기 때문에 뒤에 조건 확인 후 실행
+false && <p>참</p> //앞에가 false이기 때문에 뒤에 조건은 확인 안하고 실행 안함
 
-In the project directory, you can run:
+true || 실행 안됨
+false || 실행 됨
 
-### `yarn start`
+ex2)
+let isLoading = false;
+const component = () =>(
+	//로딩이면 로딩 컴포넌트
+	//로딩 아니면 컨텐츠 컴포넌트
+	{isLoading ? <컨텐츠/> : <로딩 />}
+);
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ex3)
+let state = ‘LOADING’;
+const component = () =>(
+	//state가 ‘LOADING’이면 로딩 컴포넌트
+	//state가 ‘CONTENTS’면 컨텐츠 컴포넌트…
+	{state === ‘LOADING’ && <로딩 />}
+	{state === ‘CONTENTS && <컨텐츠 />}
+{state === ‘OTHER’ && <Other />}
+);
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+-	Style을 이용하여 인라인 스타일링 가능
+-	class 대신 className 사용하여 class 적용 가능
+-	자식요소가 있으면 무조건 닫아야 하고, 자식요소가 없으면 열면서 닫아야 함
+<p>~~~</p> : 자식요소가 있는 경우
+<br /> : 자식요소가 없는 경우
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+4.	Component 생성
+5.	Props, state
+-props :
+컴포넌트 외부에서 컴포넌트로 넣어주는 데이터(함수도 가능)
+컴포넌트 내부에서는 자신의 props를 변경할 수 없다.
+컴포넌트 외부에서 props 데이터 변경 시, render 다시 호출
+ex)
+export interface AppProps {
+	name: string;
+}
+Interface AppState{
+	age: number;
+}
+. . .
+class App extends React.Component<AppProps, AppState>{
+ . . .
+}
+-state :
+컴포넌트 내부 데이터
+클래스의 프로퍼티와는 다르다.
+생성자 혹은 프로퍼티 초기할당으로 state 초기 할당 필요
+ex) constructor 내부에서…
+super(props);
+this.state={
+	age : 35
+}; .  .  . 
+<div>{this.state.age}</div>
+.  .  . 
+내부에서 변경하더라도 this.setState함수를 이용해야만 render호출 됨
+6.	TypeScript 관련 사이트 : https://reactjs.org/docs/static-type-checking.html#typescript
+7.	React-router : 특정 주소로 접근 시 요청에 알맞는 Component로 연결
+(스프링의 Controller같은 역할)
+설치명령: yarn add react-router-dom @types/react-router-dom
+사용예시: 
+<Route path=”/” render={() =><h3>Home</h3>} />
+<Route path=”/intro” render={() => <h3>소개</h3>} />
+…
+(정확히 특정 주소가 들어왔을 때만 해당 라우터를 실행하고 싶으면 exact={true} 옵션 필요/
+위 옵션이 없을 경우 모든 라우터화면이 노출되어 버림)
